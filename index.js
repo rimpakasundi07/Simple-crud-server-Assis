@@ -40,6 +40,11 @@ async function run() {
       res.send(result);
     });
 
+    app.get("/users/:id", (req, res) => {
+      const id = req.params.id;
+      console.log("need user with id", id);
+    });
+
     // add  database  related  apis  here
     app.post("/users", async (req, res) => {
       const newUser = req.body;
