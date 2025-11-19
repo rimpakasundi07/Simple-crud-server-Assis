@@ -34,6 +34,12 @@ async function run() {
     const userDB = client.db("usersDB");
     const usersCollection = userDB.collection("users");
 
+    app.get("/users", async (req, res) => {
+      const cursor = usersCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
     // add  data  related  apis  here
     app.post("/users", async (req, res) => {
       const newUser = req.body;
